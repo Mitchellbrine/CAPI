@@ -8,21 +8,33 @@ public class CapeDownload {
 
     public static CapeDownload instance;
 
-    public CapeDownload() {
-        instance = this;
+    public static void downloadOriginalCapes() {
+        CapeDownload.startThread();
     }
 
-    public void downloadOriginalCapes() {
-
-    }
+    public static void startThread() {        new Thread(new DownloadThread()).start();    }
 
 
-    private class DownloadThread implements Runnable {
+
+    private static class DownloadThread implements Runnable {
 
         @Override
         public void run() {
             try {
-                downloadResource()
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/blue.png"),new File("capes/","blue.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/chowtime.png"),new File("capes/","chowtime.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/diseasecraft.png"),new File("capes/","diseasecraft.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/enderpearl.png"),new File("capes/","enderpearl.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/flowstone.png"),new File("capes/","flowstone.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/glowglass.png"),new File("capes/","glowglass.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/green.png"),new File("capes/","green.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/hackery.png"),new File("capes/","hackery.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/orange.png"),new File("capes/","orange.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/pink.png"),new File("capes/","pink.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/purple.png"),new File("capes/","purple.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/red.png"),new File("capes/","red.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/steamtech.png"),new File("capes/","steamtech.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/yellow.png"),new File("capes/","yellow.png"),0);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -30,7 +42,7 @@ public class CapeDownload {
 
     }
 
-    public boolean downloadResource(URL par1URL, File par2File, long size) throws IOException
+    public static boolean downloadResource(URL par1URL, File par2File, long size) throws IOException
     {
         if(par2File.exists())
         {

@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -30,7 +31,6 @@ public class CAPI {
     }
 
     private HashMap<String,String> capes = new HashMap<String,String>();
-    private static ArrayList<String> capeURLS = new ArrayList<String>();
     private ArrayList<String> needUpdate = new ArrayList<String>();
     public String[] rainbowCapes = new String[]{"red","orange","yellow","green","blue","purple","pink"};
 
@@ -44,7 +44,7 @@ public class CAPI {
             w.println("                   ");
             w.println("                   ");
             w.println("~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
-            w.println("Make sure you put in all the capes you want or your mod links you to or else the cape will not render for you.");
+            w.println("Make sure all the capes exist that the mod calls!");
             w.println("~ ~ ~");
             w.println("Enyoy!");
             w.println("-MBrine");
@@ -57,6 +57,9 @@ public class CAPI {
         }
 
         logger = event.getModLog();
+
+        CapeDownload.downloadOriginalCapes();
+
     }
 
     @Mod.EventHandler
@@ -74,20 +77,40 @@ public class CAPI {
         return this.capes;
     }
 
-    public static ArrayList<String> getCapeURLS() {
-        return capeURLS;
-    }
-
     public ArrayList<String> getUpdates() { return this.needUpdate; }
 
-    public void addPlayerCape(String name, String capeURL) {
-        CAPI.instance.getCapes().put(name,capeURL);
-        CAPI.getCapeURLS().add(capeURL);
+    public void addCape(String capeURL, String capeName) {
+        new Thread(new CapeThread(capeURL,capeName)).start();
+    }
+
+    public void addPlayerCape(String name, String capeName) {
+        CAPI.instance.getCapes().put(name,capeName);
         CAPI.instance.getUpdates().add(name);
     }
 
     public void removePlayerCape(String name) {
         CAPI.instance.getCapes().remove(name);
+    }
+
+    private class CapeThread implements Runnable {
+
+        String capeURL;
+        String capeName;
+
+        public CapeThread(String capeURL,String capeName) {
+            this.capeURL = capeURL;
+            this.capeName = capeName;
+        }
+
+        @Override
+        public void run() {
+            try {
+                CapeDownload.downloadResource(new URL(capeURL),new File("capes/",capeName+".png"),0);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
     }
 
 }
