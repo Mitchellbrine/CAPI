@@ -27,9 +27,9 @@ public class CapeRendering {
         if (event.entityPlayer instanceof AbstractClientPlayer) {
             AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
 
-            if (CAPI.instance.getUpdates().contains(player)) {
+            if (CAPI.instance.getUpdates().contains(player.getCommandSenderName())) {
                 String capeLocation = CAPI.instance.getCapes().get(player.getCommandSenderName());
-                CAPI.instance.getUpdates().remove(player);
+                CAPI.instance.getUpdates().remove(player.getCommandSenderName());
 
                 if (capeLocation == null) {
                     return;

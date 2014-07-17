@@ -2,14 +2,14 @@
 {
   "modid": "cAPI",
   "name": "capeAPI",
-  "description": "A core mod that allows for easy cape addition!",
+  "description": "A utility mod that allows for easy cape addition!",
   "version": "1.0",
   "mcversion": "1.7.2/1.7.10",
   "url": "",
   "updateUrl": "",
   "authorList": ["Mitchellbrine"],
-  "credits": "The PoppyPack server for the idea!",
-  "logoFile": "",
+  "credits": "The guys (and not kayla) on the PoppyPack server for the idea!",
+  "logoFile": "logo.png",
   "screenshots": [],
   "dependencies": []
 }

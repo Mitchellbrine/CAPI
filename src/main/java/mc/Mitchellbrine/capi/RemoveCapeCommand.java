@@ -42,8 +42,8 @@ public class RemoveCapeCommand implements ICommand {
             if (var2.length == 1) {
                 if (var1 instanceof EntityPlayer) {
                     CAPI.instance.removePlayerCape(var1.getCommandSenderName());
-                    CapeRendering.instance.caped.remove(var1);
-                    CAPI.instance.getUpdates().add(var2[0]);
+                    //CapeRendering.instance.getCaped().remove(var1);
+                    //CAPI.instance.getUpdates().add(var2[0]);
 
                     CAPI.instance.logger.info("Removed the cape of " + var1.getCommandSenderName());
                 } else {
@@ -53,7 +53,7 @@ public class RemoveCapeCommand implements ICommand {
 
                 CAPI.instance.removePlayerCape(var2[0]);
                 CapeRendering.instance.getCaped().remove(var2[0]);
-                CAPI.instance.getUpdates().add(var2[0]);
+                //CAPI.instance.getUpdates().add(var2[0]);
                 CAPI.instance.logger.info("Removed the cape of " + var2[0]);
             } else {
                 var1.addChatMessage(new ChatComponentTranslation("capi.sender.argument"));

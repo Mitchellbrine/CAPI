@@ -44,7 +44,7 @@ public class CapeCommand implements ICommand {
                         CAPI.instance.removePlayerCape(var1.getCommandSenderName());
                         CapeRendering.instance.getCaped().remove(var1);
                         CAPI.instance.addPlayerCape(var1.getCommandSenderName(), var2[0]);
-                        CAPI.instance.getUpdates().add((EntityPlayer)var1);
+                        CAPI.instance.getUpdates().add(var1.getCommandSenderName());
                         CAPI.instance.logger.info("Changed " + var1.getCommandSenderName() + "'s cape location to " + CAPI.instance.getCapes().get(var1.getCommandSenderName()));
                     } else {
                         var1.addChatMessage(new ChatComponentTranslation("capi.sender.incorrect"));
@@ -54,7 +54,7 @@ public class CapeCommand implements ICommand {
                     CAPI.instance.removePlayerCape(var2[0]);
                     CapeRendering.instance.getCaped().remove(var2[0]);
                     CAPI.instance.addPlayerCape(var2[0],var2[1]);
-                    CAPI.instance.getUpdates().add(((EntityPlayerMP)var1).mcServer.getConfigurationManager().getPlayerForUsername(var2[0]));
+                    CAPI.instance.getUpdates().add(var2[0]);
                     CAPI.instance.logger.info("Changed " + var2[0] + "'s cape location to " + CAPI.instance.getCapes().get(var2[0]));
                 } else {
                     var1.addChatMessage(new ChatComponentTranslation("capi.sender.argument"));
