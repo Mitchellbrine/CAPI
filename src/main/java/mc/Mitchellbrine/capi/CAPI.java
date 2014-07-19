@@ -32,7 +32,7 @@ public class CAPI {
 
     private HashMap<String,String> capes = new HashMap<String,String>();
     private ArrayList<String> needUpdate = new ArrayList<String>();
-    public String[] rainbowCapes = new String[]{"red","orange","yellow","green","blue","purple","pink"};
+    public String[] rainbowCapes = new String[]{"red","orange","yellow","green","blue","purple","pink","rainbow"};
 
     @Mod.EventHandler
     public void setLogger(FMLPreInitializationEvent event) {
@@ -60,6 +60,8 @@ public class CAPI {
 
         CapeDownload.downloadOriginalCapes();
 
+        CAPI.instance.addPlayerCape("Mitchellbrine","flowstone");
+
     }
 
     @Mod.EventHandler
@@ -68,10 +70,10 @@ public class CAPI {
         FMLCommonHandler.instance().bus().register(new LoggedIn());
     }
 
-    @Mod.EventHandler
+/*    @Mod.EventHandler
     public void startServer(FMLServerStartingEvent event) {
         event.registerServerCommand(new CapeCommand());
-    }
+    } */
 
     public HashMap<String,String> getCapes() {
         return this.capes;

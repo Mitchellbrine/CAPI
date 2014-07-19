@@ -35,6 +35,8 @@ public class CapeDownload {
                 downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/red.png"),new File("capes/","red.png"),0);
                 downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/steamtech.png"),new File("capes/","steamtech.png"),0);
                 downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/yellow.png"),new File("capes/","yellow.png"),0);
+                downloadResource(new URL("https://raw.githubusercontent.com/Mitchellbrine/CAPI/master/capes/rainbow.png"),new File("capes/","rainbow.png"),0);
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

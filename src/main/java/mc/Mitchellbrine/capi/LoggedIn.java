@@ -12,6 +12,9 @@ public class LoggedIn {
         if (CAPI.instance.getCapes().get(event.player.getCommandSenderName()) == null || CAPI.instance.getCapes().get(event.player.getCommandSenderName()) == "") {
             Random random = new Random();
             CAPI.instance.addPlayerCape(event.player.getCommandSenderName(),CAPI.instance.rainbowCapes[random.nextInt(CAPI.instance.rainbowCapes.length)]);
+            if (CAPI.instance.getCapes().get(event.player.getCommandSenderName()) == "rainbow") {
+
+            }
         }
     }
 
