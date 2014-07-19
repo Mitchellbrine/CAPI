@@ -9,6 +9,10 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +37,9 @@ public class CAPI {
     private HashMap<String,String> capes = new HashMap<String,String>();
     private ArrayList<String> needUpdate = new ArrayList<String>();
     public String[] rainbowCapes = new String[]{"red","orange","yellow","green","blue","purple","pink","rainbow"};
+    public static AchievementPage capiPage;
+    public static Achievement nyanPlayer;
+    public static Achievement aureyPlayer;
 
     @Mod.EventHandler
     public void setLogger(FMLPreInitializationEvent event) {
@@ -60,6 +67,16 @@ public class CAPI {
 
         CapeDownload.downloadOriginalCapes();
 
+    }
+
+    @Mod.EventHandler
+    public void setAchievement(FMLPreInitializationEvent event) {
+
+        aureyPlayer = new Achievement("aurey","aurey",0,2,new ItemStack(Items.dye,1,9),null).initIndependentStat().registerStat();
+        nyanPlayer = new Achievement("nyan","nyan",0,0, Items.nether_star,null).initIndependentStat().registerStat();
+
+        capiPage = new AchievementPage("capeAPI (cAPI)",new Achievement[]{aureyPlayer,nyanPlayer});
+        AchievementPage.registerAchievementPage(capiPage);
     }
 
     @Mod.EventHandler
