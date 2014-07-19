@@ -60,8 +60,6 @@ public class CAPI {
 
         CapeDownload.downloadOriginalCapes();
 
-        CAPI.instance.addPlayerCape("Mitchellbrine","flowstone");
-
     }
 
     @Mod.EventHandler
